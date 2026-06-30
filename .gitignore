@@ -1,0 +1,13 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+
+# Local dev preview helpers (not needed in production hosting)
+.claude/serve.py
+
+# Local Claude settings
+.claude/settings.local.json
+
+# Downloaded tooling
+.tooling/
