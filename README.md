@@ -2,10 +2,10 @@
 
 A fast, modern, SEO- and AI-citation-optimized static site. No build step, no framework — just HTML, CSS, and vanilla JS. Host it anywhere (Netlify, Vercel, Cloudflare Pages, GitHub Pages, or your current host).
 
-**Vintage / retro** mid-century airline-poster theme. Palette: **Cream `#F3E7CD`** ·
-**Mustard `#E0A526`** · **Burnt orange `#C24A26`** · **Retro teal `#2F6F63`** ·
-**Navy `#1F3F5E`** · **Espresso `#2B2017`**. Fonts **Fjalla One** + **Raleway**.
-(All colors are CSS variables in the `:root` block at the top of `css/styles.css`.)
+**Dark premium** "first-class" theme — deep navy-black with gold accents.
+Palette: **Gold `#F2B827`** · **Navy `#003F71`** · **Base `#07090D`** · text `#EEF2F7`.
+Fonts **Fjalla One** + **Raleway**.
+(All colors are CSS variables in the `:root` block at the top of `css/styles.css` — tweak there to restyle the whole site.)
 
 ## File map
 ```

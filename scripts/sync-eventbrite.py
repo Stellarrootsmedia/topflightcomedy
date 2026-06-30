@@ -66,7 +66,9 @@ def parse_event(url):
         if kept and abs_min(d) - abs_min(kept[-1]) <= 420:
             continue
         kept.append(d)
-    future = kept
+    # Eventbrite only reliably exposes the NEXT occurrence for recurring series,
+    # so we keep just that one (accurate). The full schedule lives on Eventbrite.
+    future = kept[:1]
     venue = re.search(r'"venue"\s*:\s*\{[^}]*"name"\s*:\s*"([^"]+)"', page)
     venue = venue.group(1) if venue else "East Austin Comedy"
     # signed flyer image

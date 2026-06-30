@@ -14,8 +14,7 @@ window.TFC_SHOWS = [
     "blurb": "An earlier curtain for a packed night of stand-up \u2014 beat the late crowd and catch a fresh lineup of Austin headliners.",
     "status": "onsale",
     "dates": [
-      "2026-07-04T18:00",
-      "2026-08-29T19:30"
+      "2026-07-04T18:00"
     ]
   },
   {
@@ -30,8 +29,7 @@ window.TFC_SHOWS = [
     "blurb": "Get over the hump with Austin's funniest. A midweek stand-up showcase packed with sharp local comics and surprise drop-ins.",
     "status": "onsale",
     "dates": [
-      "2026-07-08T19:00",
-      "2026-07-22T20:30"
+      "2026-07-08T19:00"
     ]
   },
   {
@@ -46,8 +44,7 @@ window.TFC_SHOWS = [
     "blurb": "Tired of late shows? Daywalkers features comics from Netflix, The Comedy Mothership, Cap City, Kill Tony, Skankfest & more.",
     "status": "onsale",
     "dates": [
-      "2026-07-03T18:00",
-      "2026-11-06T19:30"
+      "2026-07-03T18:00"
     ]
   },
   {

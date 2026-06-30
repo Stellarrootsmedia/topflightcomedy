@@ -50,7 +50,7 @@
     if (!grid) return;
     var list = shows.filter(function (s) { return filter === "all" || s.type === filter; });
     if (!list.length) {
-      grid.innerHTML = '<p class="shows-empty">No shows in this category yet — <a href="' + FALLBACK + '" style="color:var(--orange);font-weight:800">see all dates on Eventbrite</a>.</p>';
+      grid.innerHTML = '<p class="shows-empty">No shows in this category yet — <a href="' + FALLBACK + '" style="color:var(--gold-bright);font-weight:800">see all dates on Eventbrite</a>.</p>';
       return;
     }
     grid.innerHTML = list.map(function (s) {
@@ -98,12 +98,15 @@
     var corp = s.type === "corporate";
     var upcoming = (s.dates || []).map(parse).filter(function (d) { return d >= now; }).sort(function (a, b) { return a - b; });
 
+    var recurring = (s.type === "weekly" || s.type === "showcase");
     var datesHtml = upcoming.length
       ? '<div class="modal-dates">' + upcoming.map(function (d) {
           return '<a class="d" href="' + s.ticketUrl + '" target="_blank" rel="noopener">' +
             '<b>' + fmt(d, { weekday: "short", month: "short", day: "numeric" }) + '</b>' +
             '<small>' + fmtTime(d) + ' · Get tickets →</small></a>';
-        }).join("") + '</div>'
+        }).join("") +
+        (recurring ? '<p style="font-size:.82rem;color:var(--muted);margin-top:.2rem">Recurring show — see the full schedule &amp; all dates on Eventbrite.</p>' : "") +
+        '</div>'
       : "";
 
     var cta = corp
@@ -122,7 +125,7 @@
         '<h3 id="modal-title">' + s.title + '</h3>' +
         '<div class="modal-meta">' + meta + '</div>' +
         '<p class="modal-desc">' + s.blurb + '</p>' +
-        (upcoming.length ? '<div class="eyebrow" style="margin-bottom:.6rem">Upcoming dates</div>' + datesHtml : "") +
+        (upcoming.length ? '<div class="eyebrow" style="margin-bottom:.6rem">Next date</div>' + datesHtml : "") +
         cta +
         (corp ? "" : '<div class="secure-note">' + ICONS.tix + ' Tickets &amp; checkout handled securely on Eventbrite</div>') +
       '</div>';
@@ -202,7 +205,7 @@
     });
     all.sort(function (a, b) { return a.date - b.date; });
     var html = '<h3>Next up</h3>';
-    if (!all.length) { box.innerHTML = html + '<p style="color:var(--muted)">New dates dropping soon — follow on <a href="' + FALLBACK + '" style="color:var(--orange);font-weight:800">Eventbrite</a>.</p>'; return; }
+    if (!all.length) { box.innerHTML = html + '<p style="color:var(--muted)">New dates dropping soon — follow on <a href="' + FALLBACK + '" style="color:var(--gold-bright);font-weight:800">Eventbrite</a>.</p>'; return; }
     html += all.slice(0, 6).map(function (e) {
       return '<button class="cal-event" data-open="' + e.show.id + '">' +
         '<span class="cal-date"><b>' + fmt(e.date, { day: "numeric" }) + '</b><span>' + fmt(e.date, { month: "short" }) + '</span></span>' +
@@ -260,14 +263,32 @@
   });
   $$(".nav-links a").forEach(function (a) { a.addEventListener("click", function () { nav.setAttribute("data-open", "false"); }); });
 
-  /* ---------- newsletter ---------- */
+  /* ---------- newsletter / contact (delivers via FormSubmit) ---------- */
+  var CONTACT_ENDPOINT = "https://formsubmit.co/ajax/contact@topflightcomedy.com";
   var form = $("#newsletter-form");
   if (form) form.addEventListener("submit", function (e) {
     e.preventDefault();
     var email = $("#nl-email").value.trim(), msg = $("#form-msg");
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = "Please enter a valid email."; msg.className = "form-msg"; return; }
-    msg.textContent = "You're on the list — first dibs on every show. ✈️";
-    msg.className = "form-msg ok"; form.reset();
+    var btn = form.querySelector("button"), orig = btn.textContent;
+    btn.disabled = true; btn.textContent = "Sending…";
+    msg.textContent = ""; msg.className = "form-msg";
+    fetch(CONTACT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        email: email,
+        _subject: "New newsletter signup — topflightcomedy.com",
+        message: "New subscriber from the Top Flight Comedy website: " + email,
+        _template: "table"
+      })
+    }).then(function (r) { return r.json(); }).then(function () {
+      msg.textContent = "You're on the list — first dibs on every show. ✈️";
+      msg.className = "form-msg ok"; form.reset();
+    }).catch(function () {
+      msg.textContent = "That didn't go through — email contact@topflightcomedy.com and we'll add you.";
+      msg.className = "form-msg";
+    }).finally(function () { btn.disabled = false; btn.textContent = orig; });
   });
 
   /* ---------- reveal ---------- */
