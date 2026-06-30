@@ -60,12 +60,15 @@
       { "@type": "City", "name": "Austin", "containedInPlace": { "@type": "State", "name": "Texas" } },
       { "@type": "Country", "name": "United States" }
     ],
-    "address": { "@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "TX", "addressCountry": "US" },
+    "address": { "@type": "PostalAddress", "streetAddress": "2505 East 6th Street, Suite D", "addressLocality": "Austin", "addressRegion": "TX", "postalCode": "78702", "addressCountry": "US" },
+    "location": { "@type": "Place", "name": "East Austin Comedy", "address": { "@type": "PostalAddress", "streetAddress": "2505 East 6th Street, Suite D", "addressLocality": "Austin", "addressRegion": "TX", "postalCode": "78702", "addressCountry": "US" } },
     "priceRange": "$$",
     "sameAs": [
       "https://www.instagram.com/topflightcomedy/",
       "https://www.facebook.com/profile.php?id=61556030294366",
       "https://www.youtube.com/channel/UCZuteuMPeCq_bllrj5ifnGg",
+      "https://www.eventbrite.com/o/78517158513",
+      "https://beacons.ai/evanlopez",
       "https://linktr.ee/topflightcomedy"
     ]
   }
@@ -122,6 +125,7 @@
         </a>
         <ul class="nav-links">
           <li><a href="#shows">Shows</a></li>
+          <li><a href="#calendar">Calendar</a></li>
           <li><a href="#how">How it works</a></li>
           <li><a href="#services">Book us</a></li>
           <li><a href="#about">About</a></li>
@@ -189,6 +193,25 @@
           <button class="chip" data-filter="corporate" aria-pressed="false">Corporate</button>
         </div>
         <div class="shows-grid" id="shows-grid"><!-- rendered by main.js --></div>
+        <div style="margin-top:2rem;display:flex;gap:.8rem;flex-wrap:wrap">
+          <a class="btn btn--accent" href="https://www.eventbrite.com/o/78517158513" target="_blank" rel="noopener">All dates on Eventbrite</a>
+          <a class="btn btn--ghost" href="https://beacons.ai/evanlopez" target="_blank" rel="noopener">More shows I'm promoting</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CALENDAR ===================== -->
+    <section class="section section--tint" id="calendar" aria-labelledby="cal-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Show calendar</span>
+          <h2 id="cal-title">Mark your calendar</h2>
+          <p>Every Top Flight date on Eventbrite, in one place. Tap a highlighted day to grab tickets.</p>
+        </div>
+        <div class="calendar-wrap">
+          <div class="calendar reveal" id="cal-root"><!-- rendered by main.js --></div>
+          <div class="cal-list reveal" id="cal-list"><!-- rendered by main.js --></div>
+        </div>
       </div>
     </section>
 
@@ -350,8 +373,8 @@
             </a>
           </div>
         </div>
-        <div><h4>Explore</h4><ul><li><a href="#shows">Upcoming Shows</a></li><li><a href="#how">How it works</a></li><li><a href="#about">About Evan</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-        <div><h4>Book Us</h4><ul><li><a href="#services">Corporate Events</a></li><li><a href="#services">Private Speakeasy</a></li><li><a href="#services">Venue Partnerships</a></li><li><a href="https://topflightcomedy.com/performers/">Perform With Us</a></li></ul></div>
+        <div><h4>Explore</h4><ul><li><a href="#shows">Upcoming Shows</a></li><li><a href="#calendar">Calendar</a></li><li><a href="#about">About Evan</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+        <div><h4>Tickets &amp; Booking</h4><ul><li><a href="https://www.eventbrite.com/o/78517158513">Eventbrite Tickets</a></li><li><a href="https://beacons.ai/evanlopez">Beacons</a></li><li><a href="#services">Corporate Events</a></li><li><a href="https://topflightcomedy.com/performers/">Perform With Us</a></li></ul></div>
         <div><h4>Connect</h4><ul><li><a href="https://topflightcomedy.com/contact/">Contact</a></li><li><a href="https://www.instagram.com/topflightcomedy/">Instagram</a></li><li><a href="https://linktr.ee/topflightcomedy">All Links</a></li><li><a href="#newsletter">Newsletter</a></li></ul></div>
       </div>
       <div class="footer-bottom">
