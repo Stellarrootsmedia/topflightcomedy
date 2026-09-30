@@ -11,3 +11,7 @@ Thumbs.db
 
 # Downloaded tooling
 .tooling/
+
+# Other projects / scratch (not part of the Top Flight site)
+podcast-thumbnails/
+.claude/dns-backup-*.txt
