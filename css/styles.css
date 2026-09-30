@@ -411,3 +411,10 @@ body.no-scroll { overflow: hidden; }
   .footer-grid a { display: inline-block; padding: 0.35rem 0; }
   .faq-q { font-size: 1.05rem; }
 }
+.hero-grid > * { min-width: 0; }
+.hero h1 { overflow-wrap: break-word; }
+@media (max-width: 560px) {
+  .brand span small { display: none; }
+  .brand span { white-space: nowrap; }
+  .brand img { width: 36px; height: 36px; }
+}

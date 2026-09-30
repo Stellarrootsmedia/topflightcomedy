@@ -4,8 +4,22 @@
     {
       "name": "site",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["/Users/evanlopez/Documents/Claude Development/.claude/serve.py"],
+      "runtimeArgs": [
+        "/Users/evanlopez/Documents/Claude Development/.claude/serve.py"
+      ],
       "port": 4321
+    },
+    {
+      "name": "evanlopez",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4322",
+        "--directory",
+        "/Users/evanlopez/Documents/Evan Lopez Website"
+      ],
+      "port": 4322
     }
   ]
 }
