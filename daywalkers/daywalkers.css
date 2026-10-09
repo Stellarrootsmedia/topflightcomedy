@@ -105,6 +105,14 @@ ul { list-style: none; }
 .facts strong { display: block; font-family: 'Fjalla One', Impact, sans-serif; font-weight: 400; font-size: var(--step-1); color: var(--white); line-height: 1.1; }
 .facts span { font-size: var(--step--1); color: var(--muted); }
 
+.earlybird {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  margin: -0.4rem 0 1.6rem; padding: 0.6rem 1rem;
+  background: rgba(242, 184, 39, 0.12); border: 1px solid var(--line-gold); border-radius: 14px;
+  color: var(--text); font-size: var(--step--1);
+}
+.earlybird::before { content: "50% OFF"; flex: none; background: var(--gold); color: #1a1304; font-weight: 800; letter-spacing: 0.06em; font-size: 0.75rem; padding: 0.2rem 0.55rem; border-radius: 999px; }
+.earlybird strong { color: var(--gold-bright); }
 .hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
 .next { color: var(--muted); }
 .next strong { color: var(--white); }
