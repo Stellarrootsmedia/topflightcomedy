@@ -418,3 +418,56 @@ body.no-scroll { overflow: hidden; }
   .brand span { white-space: nowrap; }
   .brand img { width: 36px; height: 36px; }
 }
+
+/* ============================================================
+   SUBPAGES (/shows/, show pages, /evan-lopez/)
+   ============================================================ */
+.crumbs { font-size: 0.85rem; color: var(--muted-2); margin-bottom: 1.2rem; }
+.crumbs a { color: var(--muted); }
+.crumbs a:hover { color: var(--gold-bright); }
+.crumbs span { margin-inline: 0.45rem; }
+.page-hero { padding-block: clamp(2.5rem, 6vw, 4.5rem); border-bottom: 1px solid var(--line); background: radial-gradient(900px 400px at 85% -10%, rgba(0, 63, 113, 0.45), transparent 70%); }
+.page-hero h1 { font-size: var(--step-4); text-transform: uppercase; margin-top: 0.8rem; line-height: 1.02; overflow-wrap: break-word; }
+.page-hero h1 em { font-style: normal; color: var(--gold); }
+.page-hero .lead { font-size: var(--step-1); color: var(--muted); max-width: 46ch; margin-top: 1.1rem; line-height: 1.5; }
+.page-hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
+.page-hero-grid > * { min-width: 0; }
+.page-hero-media img { width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--line-2); box-shadow: var(--shadow); }
+.page-hero .hero-actions { margin-top: 1.6rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
+@media (max-width: 880px) { .page-hero-grid { grid-template-columns: 1fr; } .page-hero-media { max-width: 520px; } }
+
+.facts { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.8rem; margin-top: 1.6rem; }
+.facts li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 0.9rem 1rem; }
+.facts strong { display: block; font-family: 'Fjalla One', sans-serif; text-transform: uppercase; font-size: 1.1rem; color: var(--gold-bright); }
+.facts span { color: var(--muted); font-size: 0.88rem; }
+.next-line { margin-top: 1rem; color: var(--muted); }
+.next-line strong { color: var(--text); }
+
+.show-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.4rem; }
+.show-tile { display: flex; flex-direction: column; background: linear-gradient(180deg, var(--surface), var(--bg)); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: 0.3s var(--ease); }
+.show-tile:hover { border-color: var(--line-gold); transform: translateY(-4px); }
+.show-tile img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; background: var(--navy-deep); }
+.show-tile .body { padding: 1.4rem 1.4rem 1.6rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+.show-tile h2, .show-tile h3 { font-size: var(--step-1); text-transform: uppercase; }
+.show-tile .when { color: var(--gold-bright); font-weight: 800; font-size: 0.9rem; }
+.show-tile p { color: var(--muted); font-size: 0.95rem; }
+.show-tile .actions { margin-top: auto; padding-top: 0.6rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+.prose { max-width: 68ch; }
+.prose p { color: var(--muted); font-size: var(--step-0); line-height: 1.7; }
+.prose p + p { margin-top: 1rem; }
+.prose h2 { font-size: var(--step-2); text-transform: uppercase; margin: 2.2rem 0 0.8rem; }
+.prose h2:first-child { margin-top: 0; }
+.prose a { color: var(--gold-bright); text-decoration: underline; text-underline-offset: 3px; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; margin-top: 1rem; }
+.chips li { padding: 0.45rem 0.9rem; border-radius: 999px; border: 1px solid var(--line-gold); background: rgba(242, 184, 39, 0.06); font-weight: 700; font-size: 0.88rem; }
+.two-col { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.two-col > * { min-width: 0; }
+.side-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; }
+.side-card + .side-card { margin-top: 1.2rem; }
+.side-card h3 { font-size: var(--step-1); text-transform: uppercase; margin-bottom: 0.8rem; }
+.side-card ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+.side-card a { color: var(--muted); }
+.side-card a:hover { color: var(--gold-bright); }
+@media (max-width: 880px) { .two-col { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .page-hero .hero-actions .btn { width: 100%; justify-content: center; } }
