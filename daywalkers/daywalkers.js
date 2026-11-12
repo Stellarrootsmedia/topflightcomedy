@@ -1,7 +1,23 @@
 /* Daywalkers landing page: next-show date + on-page Eventbrite checkout + Google Ads tracking */
 (function () {
   var EVENT_ID = '886479824017';
-  var AFFILIATE = 'tfcdaywalkers';
+  var DEFAULT_AFFILIATE = 'tfcdaywalkers';
+  var AFF_PATTERN = /^[A-Za-z0-9_-]{1,40}$/;
+
+  /* Each ad links here with ?aff=<code>; that code goes to Eventbrite so every order is counted
+     under the ad that sent it. Kept for the visit in case the page is reloaded. */
+  function pickAffiliate() {
+    var fromUrl = null;
+    try { fromUrl = new URLSearchParams(location.search).get('aff'); } catch (e) {}
+    if (fromUrl && AFF_PATTERN.test(fromUrl)) {
+      try { sessionStorage.setItem('tfc_aff', fromUrl); } catch (e) {}
+      return fromUrl;
+    }
+    var saved = null;
+    try { saved = sessionStorage.getItem('tfc_aff'); } catch (e) {}
+    return saved && AFF_PATTERN.test(saved) ? saved : DEFAULT_AFFILIATE;
+  }
+  var AFFILIATE = pickAffiliate();
   // Google Ads "Ticket purchase" conversion (send_to = AW-ID/label)
   var PURCHASE_CONVERSION = 'AW-17864140957/8XM7CImYpZYdEJ3RpMZC';
   var TICKET_VALUE = 15;
@@ -34,8 +50,14 @@
 
   buttons.forEach(function (btn, i) {
     btn.id = btn.id || 'eb-checkout-' + i;
+    // Plain-link fallback carries the same code
+    try {
+      var href = new URL(btn.href);
+      href.searchParams.set('aff', AFFILIATE);
+      btn.href = href.toString();
+    } catch (e) {}
     btn.addEventListener('click', function (e) {
-      track('begin_checkout', { cta: btn.dataset.cta, method: ready ? 'modal' : 'link' });
+      track('begin_checkout', { cta: btn.dataset.cta, method: ready ? 'modal' : 'link', aff: AFFILIATE });
       if (ready) e.preventDefault();
     });
   });
