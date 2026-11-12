@@ -26,6 +26,13 @@
     if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
   }
 
+  // Meta Pixel; eventID lets Meta drop a duplicate of the same order
+  function metaTrack(name, params, eventId) {
+    if (typeof window.fbq !== 'function') return;
+    if (eventId) window.fbq('track', name, params || {}, { eventID: eventId });
+    else window.fbq('track', name, params || {});
+  }
+
   /* ---- Next show: the coming Friday at 6PM Central (rolls over after 6:30PM Friday) ---- */
   function nextShowLabel() {
     var parts = new Intl.DateTimeFormat('en-US', {
@@ -58,6 +65,7 @@
     } catch (e) {}
     btn.addEventListener('click', function (e) {
       track('begin_checkout', { cta: btn.dataset.cta, method: ready ? 'modal' : 'link', aff: AFFILIATE });
+      metaTrack('InitiateCheckout', { content_name: 'Daywalkers', content_category: AFFILIATE, currency: 'USD', value: TICKET_VALUE });
       if (ready) e.preventDefault();
     });
   });
@@ -71,6 +79,8 @@
       transaction_id: orderId || ''
     });
     track('purchase', { transaction_id: orderId || '', value: TICKET_VALUE, currency: 'USD' });
+    metaTrack('Purchase', { content_name: 'Daywalkers', content_category: AFFILIATE, value: TICKET_VALUE, currency: 'USD' },
+      orderId ? 'eb_' + orderId : null);
   }
 
   window.tfcInitCheckout = function () {
